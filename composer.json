@@ -1,0 +1,18 @@
+{
+    "name": "eoko/text-kernel",
+    "type": "library",
+    "authors": [
+        {
+            "name": "GASPARINI Nicolas",
+            "email": "nicolas.gasp@free.fr"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eoko\\": "src/"
+        }
+    }
+}
