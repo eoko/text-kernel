@@ -19,8 +19,10 @@ use Eoko\TextKernel\Exception\ProcessingException;
 use Eoko\TextKernel\Exception\ProductException;
 use Eoko\TextKernel\Exception\ResponseException;
 use Eoko\TextKernel\Exception\SourceboxException;
+use Eoko\TextKernel\Exception\TextKernelException;
 use Eoko\TextKernel\Exception\TMFException;
 use Eoko\TextKernel\Exception\UIException;
+use Eoko\TextKernel\Exception\XmlParsingException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -201,7 +203,7 @@ class ApiBase
                 throw new UIException($exception['errorType'], $exception['errorMessage']);
 
             default:
-                throw $e;
+                throw new ResponseException($exception['errorType'], $exception['errorMessage']);
         }
     }
 
@@ -255,5 +257,4 @@ class ApiBase
         }
         return $this->client;
     }
-
 }

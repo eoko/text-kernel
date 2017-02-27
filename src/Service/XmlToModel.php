@@ -108,7 +108,7 @@ class XmlToModel
     }
 
     /**
-     * @return XmlModelInterface|null
+     * @return XmlModelInterface
      * @throws TextKernelException
      * @throws XmlParsingException
      */
