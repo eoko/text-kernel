@@ -89,7 +89,12 @@ class XmlToModel
             }
             return $result;
         } else if (!empty($type)) {
-            return (new XmlToModel($value, $type))->getModel();
+            $model = (new XmlToModel($value, $type))->getModel();
+            if ($model->isEmpty()) {
+                return null;
+            } else {
+                return $model;
+            }
         } else if ($value->count() === 1) {
             $value = $value->children();
         }

@@ -22,4 +22,24 @@ abstract class XmlModelBase implements XmlModelInterface
     {
         return (isset($this->typeMapping[$name]) ? $this->typeMapping[$name] : null);
     }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        $reflection = new \ReflectionClass($this);
+        $methods = $reflection->getMethods(\ReflectionMethod::IS_PUBLIC);
+
+        foreach($methods as $method) {
+            $methodName = $method->name;
+            if (strtolower($methodName) !== 'gettype' && preg_match('/^get/', $methodName)) {
+                if (!empty($this->$methodName())) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

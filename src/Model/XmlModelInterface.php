@@ -16,4 +16,10 @@ interface XmlModelInterface
      * @return mixed|null
      */
     public function getType($name);
+
+    /**
+     * Check if this model is empty
+     * @return boolean
+     */
+    public function isEmpty();
 }
