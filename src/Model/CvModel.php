@@ -101,7 +101,7 @@ class CvModel extends XmlModelBase
     }
 
     /**
-     * @return array
+     * @return EducationItemModel[]|null
      */
     public function getEducationHistory()
     {
@@ -109,7 +109,7 @@ class CvModel extends XmlModelBase
     }
 
     /**
-     * @return array
+     * @return EmploymentModel[]|null
      */
     public function getEmploymentHistory()
     {

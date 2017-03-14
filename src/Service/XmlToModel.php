@@ -59,7 +59,7 @@ class XmlToModel
             throw new TextKernelException(sprintf('Model class must implements "%s"', XmlModelInterface::class));
         }
 
-        foreach($this->doc as $key => $value) {
+        foreach ($this->doc as $key => $value) {
             $setter = 'set' . $key;
             if (method_exists($this->model, $setter)) {
                 $this->model->$setter($this->parseElement($key, $value));
@@ -81,7 +81,7 @@ class XmlToModel
         if ($type === 'array') {
             $result = [];
             $elements = $value->children();
-            foreach($elements as $cKey => $cValue) {
+            foreach ($elements as $cKey => $cValue) {
                 $el = $this->parseElement($cKey, $cValue);
                 if ($el !== null) {
                     $result[] = $el;
@@ -98,10 +98,14 @@ class XmlToModel
 
         if (strlen($value) <= 0) {
             return null;
-        } else if(preg_match('/Code$/i', $key)) {
+        } else if (preg_match('/Code$/i', $key)) {
             return (int)$value;
-        } else if(preg_match('/Date$/i', $key) || preg_match('/^Date/i', $key)) {
-            return \DateTime::createFromFormat('Y-m-d', $value);
+        } else if (preg_match('/Date$/i', $key) || preg_match('/^Date/i', $key)) {
+            if (($value = \DateTime::createFromFormat('Y-m-d', $value)) !== false) {
+                return $value;
+            } else {
+                return null;
+            }
         } else {
             return $value;
         }

@@ -47,7 +47,7 @@ class SourceboxApi extends ApiBase
 
         $result = $this->extract($fp, $skipStore, $skipDeduplication, $doValidation);
 
-        fclose($fp);
+        //fclose($fp);
 
         return $result;
     }
