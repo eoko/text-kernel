@@ -21,7 +21,7 @@ class TextKernelFactory
      * @param string $baseUri
      * @return SourceboxApi
      */
-    public function createSourceboxApi($account, $username, $password, $baseUri)
+    public function createSourceboxApi($account, $username, $password, $baseUri = '')
     {
         return (new SourceboxApi())->setCredentials($account, $username, $password)->setBaseUri($baseUri);
     }

@@ -227,7 +227,7 @@ class ApiBase
      * @return $this
      */
     public function setBaseUri($baseUri) {
-        if($baseUri) {
+        if ($baseUri !== '') {
             $this->baseUri = $baseUri;
         }
         return $this;
