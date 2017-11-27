@@ -55,6 +55,7 @@ class ApiBase
         //add credentials to request
         if ($this->credentials) {
             $method = strtoupper($method);
+
             if ($method === 'POST') {
                 if (isset($options['multipart'])) {
                     $multipart = $this->setMultipartField('username', $this->credentials['username'], $options['multipart']);
@@ -73,7 +74,6 @@ class ApiBase
                 );
             }
         }
-
         return $this->request($method, $uri, $options);
     }
 
@@ -220,6 +220,16 @@ class ApiBase
             'username' => $username,
             'password' => $password
         ];
+        return $this;
+    }
+    /**
+     * @param string $baseUri
+     * @return $this
+     */
+    public function setBaseUri($baseUri) {
+        if ($baseUri !== '') {
+            $this->baseUri = $baseUri;
+        }
         return $this;
     }
 
